@@ -4,6 +4,7 @@ scripts and other tools for test rig setup
 # Setup
 cd /home/misc_payload/teensy/
 
+```bash
 sudo sh synchronize.sh
 sudo /etc/init.d/chrony stop
 sudo /etc/init.d/chrony start
@@ -19,12 +20,12 @@ roslaunch dji_sdk sdk.launch
 roslaunch launchers payload_sensors.launch
 roslaunch launchers record_mapping_velodyne_imu.launch
 
-data is saved in /home/frc-uav/data/
+#data is saved in /home/frc-uav/data/
 
 
-to calibrate the cameras:
+#to calibrate the cameras:
 
 rosrun camera_calibration cameracalibrator.py --size 11x9 --square 0.043 right:=/mapping/right/image_raw left:=/mapping/left/image_raw left_camera:=/mapping/left right_camera:=/mapping/right --approximate=0.01
 
-the files generated are saved in the folder /tmp/calibrationdata.tar.gz
-
+# the files generated are saved in the folder /tmp/calibrationdata.tar.gz
+```

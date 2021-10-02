@@ -29,3 +29,13 @@ rosrun camera_calibration cameracalibrator.py --size 11x9 --square 0.043 right:=
 
 # the files generated are saved in the folder /tmp/calibrationdata.tar.gz
 ```
+
+
+
+
+
+
+
+
+
+Save ---- copying_from_payload.sh to home directory // Change your save directory path

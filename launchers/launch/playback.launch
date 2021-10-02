@@ -1,0 +1,36 @@
+<!-- 
+*v1*************************************************************************************
+* This is developed at Carnegie Mellon University in collaboration with Autel Robotics *
+*                                                                                      *
+* PI:                                                                                  *
+* George Kantor                                                                        *
+*                                                                                      *
+* Authors:                                                                             * 
+* Weizhao Shao                                                                         *
+* Cong Li                                                                              *
+* Srinivasan Vijayarangan                                                              *
+*                                                                                      *
+* Please refer to the contract document for details on license/copyright information.  *
+****************************************************************************************
+-->
+<launch>
+
+  <group ns="mapping" >
+    <group ns="left" >
+      <node pkg="image_proc" type="image_proc" name="left_image_proc" />
+    </group>
+    <group ns="right" >
+      <node pkg="image_proc" type="image_proc" name="right_image_proc" />
+    </group>
+  </group>
+  <group ns="refinement" >
+    <group ns="left" >
+      <node pkg="image_proc" type="image_proc" name="left" />
+    </group>
+    <group ns="right" >
+      <node pkg="image_proc" type="image_proc" name="right" />
+    </group>
+  </group>
+  <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz0" args="-d $(find launchers)/config/autel_sensors.rviz" />
+	  
+</launch>

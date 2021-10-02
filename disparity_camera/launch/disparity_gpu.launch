@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!-- SGBM Params from launch file is not a good iide for GPU. these are defined in the CUDA header -->
+<launch>
+
+	<node pkg ="disparity_camera" type="disparity_camera_server_gpu" name="disparity_camera_server_gpu" output="screen">
+		<param name="/sgbm/resize_img_flag" type="bool" value="true" />
+		<param name="/sgbm/resize_img_val" type="double" value="0.5" />
+	</node>
+	
+	<node pkg ="disparity_camera" type="disparity_camera_client_gpu" name="disparity_camera_client_gpu" output="screen"></node>
+	
+
+<!--node pkg ="disparity_camera" type="disparity_camera_client_gpu" name="disparity_camera_client_gpu" output="screen"> </node-->
+
+<!--node pkg="nodelet" type="nodelet" name="pcl_filter_manager" args="manager"/>
+<node pkg="nodelet" type="nodelet" name="outlier_filter" args="load pcl/StatisticalOutlierRemoval pcl_filter_manager" >
+	<param name="mean_k" type="int" value="5000" />
+	<param name="stddev" type="double" value="0.1" />
+	<param name="negative" type="bool" value="false" />
+
+	<remap from="~input" to="/point_cloud_inhand" />
+	<remap from="~output" to="/cloud_in" />
+</node-->
+
+</launch>

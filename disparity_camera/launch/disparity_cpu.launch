@@ -1,0 +1,47 @@
+<!-- xml version="1.0"? -->
+<launch>
+
+<node pkg ="disparity_camera" type="disparity_camera_server_cpu" name="disparity_camera_server_cpu" output="screen">
+
+	<param name="/sgbm/ResizeImgFlag" type="bool" value="true" />
+	<param name="/sgbm/ResizeImgVal" type="double" value="0.5" />
+	<param name="/sgbm/WinSize" type="int" value="3" />
+	<param name="/sgbm/MinDisparity" type="int" value="0" />
+	<param name="/sgbm/MaxDisparity" type="int" value="480" />
+	<param name="/sgbm/UniqueRatio"  type="int" value="30" />
+	<param name="/sgbm/PreFilterCap" type="int" value="10" />
+	<param name="/sgbm/SpeckleWinSize" type="int" value="30" />
+	<param name="/sgbm/SpeckleRange" type="int" value="3" />
+	<param name="/sgbm/Disp12MaxDisff" type="int" value="1000" />
+	
+	<param name="/calib/Cx" type="double" value="682.85536" />
+	<param name="/calib/Cy" type="double" value="555.98205" />
+	<param name="/calib/StereoBaseline" type="double" value="-0.025" />
+	<param name="/calib/FNorm" type="double" value="1438.9348" />
+
+
+    <!--
+	<param name="/sgbm/ResizeImgFlag" type="bool" value="false" />
+	<param name="/sgbm/ResizeImgVal" type="double" value="1" />
+	<param name="/sgbm/WinSize" type="int" value="3" />
+	<param name="/sgbm/MinDisparity" type="int" value="0" />
+	<param name="/sgbm/MaxDisparity" type="int" value="416" />
+	<param name="/sgbm/UniqueRatio"  type="int" value="30" />
+	<param name="/sgbm/PreFilterCap" type="int" value="10" />
+	<param name="/sgbm/SpeckleWinSize" type="int" value="30" />
+	<param name="/sgbm/SpeckleRange" type="int" value="3" />
+	<param name="/sgbm/Disp12MaxDisff" type="int" value="416" />
+	
+	<param name="/calib/Cx" type="double" value="836.61331176" />
+	<param name="/calib/Cy" type="double" value="521.5150566101074" />
+	<param name="/calib/StereoBaseline" type="double" value="-0.06012057" />
+	<param name="/calib/FNorm" type="double" value="1711.0241749" />
+	-->
+
+</node>
+
+
+<node pkg ="disparity_camera" type="disparity_camera_client_cpu" name="disparity_camera_client_cpu" output="screen"> </node>
+
+
+</launch>

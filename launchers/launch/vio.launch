@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- 
+*v1*************************************************************************************
+* This is developed at Carnegie Mellon University in collaboration with Autel Robotics *
+*                                                                                      *
+* PI:                                                                                  *
+* George Kantor                                                                        *
+*                                                                                      *
+* Authors:                                                                             * 
+* Weizhao Shao                                                                         *
+* Cong Li                                                                              *
+* Srinivasan Vijayarangan                                                              *
+*                                                                                      *
+* Please refer to the contract document for details on license/copyright information.  *
+****************************************************************************************
+-->
+<launch>
+  <!-- system config file -->
+  <arg name="vio_config_path" default = "$(find launchers)/config/autel_vio_2.yaml"/>
+  <!-- frontend launch -->
+  <!-- include file="$(find launchers)/launch/frontend.launch" / -->
+  <!-- VIO node -->
+
+  <node name="smart_smoother"  pkg="visual_inertial_odometry" type="smart_smoother" cwd="node" output="screen">
+        <rosparam command="load" file="$(arg vio_config_path)" />  	
+  </node>
+  <!-- RVIZ node -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find launchers)/config/rvizConfig.rviz"/>
+</launch>
+

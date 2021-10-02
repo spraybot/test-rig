@@ -1,0 +1,121 @@
+#v1************************************************************************************
+# This is developed at Carnegie Mellon University in collaboration with Autel Robotics 
+#                                                                                      
+# PI:                                                                                  
+# George Kantor                                                                        
+#                                                                                      
+# Authors:                                                                              
+# Weizhao Shao                                                                         
+# Cong Li                                                                              
+# Srinivasan Vijayarangan                                                              
+#                                                                                      
+# Please refer to the contract document for details on license/copyright information.  
+#**************************************************************************************
+## FRONTEND
+rescale_factor: 1.0
+tracking_method: "HYBRID_BASED" # OPTICALFLOW_BASED FEATURE_BASED HYBRID_BASED
+descriptor: "ORB" # SURF SIFT
+descriptor_distance_both_ways: false
+feature_extraction_boundary: 35
+feature_search_boundary: 10
+min_dist_from_camera: 4
+max_disparity: 899.6
+# hybrid based
+patch_num_r: 5
+patch_num_c: 5
+reextract_patch_number: 10
+matcher_distance_threshold: 30
+# LKT based
+stereo_tracking_search_window: 49
+frame2frame_tracking_search_window: 15
+percent_border: 0.01
+#methods
+old_hybrid: true
+custom_matcher: false
+# corner detector
+corner_number: 200
+percent_matches: 0.4
+percent_min_corners: 0.4 #0.3
+hybrid_percent_tracked_corners: 0.4 #0.3
+addl_corners: 0
+equalize_histogram: true
+refine_corners_after_corner_extraction: true
+refine_corners_after_optical_flow: false
+max_disparity_alignment_threshold: 3
+landmark_search_radius: 10
+display_tracking_ui: false
+write_matches_to_file: false
+display_verbose_output: false
+
+## VIO
+# subcriber
+imu_topic: "/kitti/oxts/imu"
+frontend_topic: "/stereo_matches"
+lidar_topic: "/smatch_camera_odom"
+loop_closure_topic: "/lc_pose"
+# publisher
+odom_imu_rate_topic: "odom_imu"
+odom_camera_rate_topic: "odom_camera"
+camera_pose_visual_topic: "odom_camera_visual"
+camera_path_publish_topic: "odom_camera_path"
+landmark_topic: "landmarks"
+# stereo camera intrinsics, rectified
+#fx: 996.271429
+#fy: 996.271429
+#cx: 703.453888
+#cy: 511.928577
+fx: 718.856
+fy: 718.856
+cx: 607.1928
+cy: 185.2157
+baseline: 0.537
+# fixed-lag smoother
+lag_to_use: 5
+bound_optimizer: true
+use_isam2: false
+# set LM parameter
+max_iteration: 4
+absolute_error_toleration: 0.001
+relative_error_toleration: 0.001
+lambda_upper_bound: 1000
+use_ceres_default: false
+# set noise
+camera_sigma: 2 # 6 for FEATURE_BASED
+imu_gyro_bias_noise_sigma: 0.01 #0.01 # rad
+imu_acce_bias_noise_sigma: 0.005 #0.005 # m
+state_pose_trans_noise_sigma: 0.0001 # 0.01 // intial position
+state_pose_orien_noise_sigma: 0.1321 # 0.1321 # 0.02
+state_velocity_noise_sigma: 0.0001 # 0.005 // initial velocity
+#accelerameter_noise_sigma2: 0.0025 # 0.0025
+#accelerameter_noise_cov: [5.625e-3, 0, 0, 0, 2.5e-3, 0, 0, 0, 0.01]
+#gyroscope_noise_cov:  [2.5e-4, 0, 0, 0, 2.5e-4, 0, 0, 0, 2.5e-4]
+accelerameter_noise_cov: [0.0004, 0, 0, 0, 0.0004, 0, 0, 0, 0.0004]
+gyroscope_noise_cov:  [0.0004363323129985824, 0, 0, 0, 0.0004363323129985824, 0, 0, 0, 0.0004363323129985824]
+accelerameter_bias_cov: [0.0000625, 0, 0, 0, 0.0000625, 0, 0, 0, 0.0000625]
+gyroscope_bias_cov: [0.000001, 0, 0, 0, 0.000001, 0, 0, 0, 0.000001]
+#accelerameter_bias_cov: [0.0002, 0, 0, 0, 0.0002, 0, 0, 0, 0.0002]
+#gyroscope_bias_cov: [0.0003, 0, 0, 0, 0.0003, 0, 0, 0, 0.0003]
+integration_cov_sigma2: 0.00001
+#integration_cov_sigma2: 0.0001
+bias_accelermeter_intgration_sigma2: 0.00001
+lidar_feedback_sigma_trans: 0.07
+lidar_feedback_sigma_orien: 0.05
+# whether use lidar feedback
+lidar_feedback: false
+time_interval_to_use_lidar_feedback: 0.001
+# set extrinsic IMU and Lidar
+T_I_Lidar: [0, -1, 0, -0.028030000000000, 
+            1,  0, 0,  0.034960000000000,
+            0,  0, 1, -0.087869000000000,
+            0,  0, 0, 1]
+# set extrinsic IMU and left camera
+quat_I_LC: [0.4975, -0.5055, 0.5033, -0.4937]
+posi_I_LC: [1.1018, -0.8158, 0.2479]
+# set smart factor parameter
+landmark_distance_threshold: 200
+outlier_rejection_threshold: 3 # 5 8
+# set frontend screening parameter
+robust_feature_ratio: 0.1
+number_frame_tracked: 4
+triangulation_landmark_distance_threshold: 200
+triangulation_outlier_rejection_threshold: 2 # 6 8

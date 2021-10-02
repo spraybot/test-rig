@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- 
+*v1*************************************************************************************
+* This is developed at Carnegie Mellon University in collaboration with Autel Robotics *
+*                                                                                      *
+* PI:                                                                                  *
+* George Kantor                                                                        *
+*                                                                                      *
+* Authors:                                                                             * 
+* Weizhao Shao                                                                         *
+* Cong Li                                                                              *
+* Srinivasan Vijayarangan                                                              *
+*                                                                                      *
+* Please refer to the contract document for details on license/copyright information.  *
+****************************************************************************************
+-->
+<launch>
+
+  <group ns="mapping" >
+    <group ns="left" >
+      <node pkg="image_proc" type="image_proc" name="left_image_proc" />
+      <node pkg="nodelet" type="nodelet" args="standalone image_proc/resize"
+	    name="left_resize">
+	<param name="scale_height" value="0.5" />
+	<param name="scale_width" value="0.5" />
+
+	<remap from="image" to="image_rect_color" />
+
+	<remap from="~image" to="scaled/image_rect_color" />
+	<remap from="~camera_info" to="scaled/camera_info" />
+	
+	</node>
+    </group>
+    <group ns="right" >
+      <node pkg="image_proc" type="image_proc" name="right_image_proc" />
+      <node pkg="nodelet" type="nodelet" args="standalone image_proc/resize"
+	    name="right_resize">
+	<param name="scale_height" value="0.5" />
+	<param name="scale_width" value="0.5" />
+
+	<remap from="image" to="image_rect_color" />
+
+	<remap from="~image" to="scaled/image_rect_color" />
+	<remap from="~camera_info" to="scaled/camera_info" />
+	
+	</node>
+    </group>
+  </group>
+
+</launch>

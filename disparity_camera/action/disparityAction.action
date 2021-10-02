@@ -1,0 +1,8 @@
+#goal definition
+sensor_msgs/Image[] input_image
+---
+#result definition
+sensor_msgs/PointCloud2 point_cloud_    
+---
+#feedback
+int32 pcl_sequence_no_

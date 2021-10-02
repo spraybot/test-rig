@@ -1,0 +1,35 @@
+<!-- 
+*v1*************************************************************************************
+* This is developed at Carnegie Mellon University in collaboration with Autel Robotics *
+*                                                                                      *
+* PI:                                                                                  *
+* George Kantor                                                                        *
+*                                                                                      *
+* Authors:                                                                             * 
+* Weizhao Shao                                                                         *
+* Cong Li                                                                              *
+* Srinivasan Vijayarangan                                                              *
+*                                                                                      *
+* Please refer to the contract document for details on license/copyright information.  *
+****************************************************************************************
+-->
+<launch>
+
+  <param name="/use_sim_time" value="false"/>
+  <arg name="outdir" />
+  <arg name="prefix" default="output" />
+  <node pkg="rosbag" type="record" name="output_logger" output="screen"
+	args=" -o $(arg outdir)/$(arg prefix) --split --size=2000
+
+/smart_smoother/odom_camera
+/smart_smoother/odom_imu
+/smatch_camera_odom
+/velodyne_dewarped_cloud
+/smart_smoother/odom_camera_path
+/smart_smoother/odom_camera_visual
+/loop_closure/global_pose_graph 
+"
+	/>
+  
+    
+</launch>

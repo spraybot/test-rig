@@ -1,0 +1,22 @@
+<!-- 
+*v1*************************************************************************************
+* This is developed at Carnegie Mellon University in collaboration with Autel Robotics *
+*                                                                                      *
+* PI:                                                                                  *
+* George Kantor                                                                        *
+*                                                                                      *
+* Authors:                                                                             * 
+* Weizhao Shao                                                                         *
+* Cong Li                                                                              *
+* Srinivasan Vijayarangan                                                              *
+*                                                                                      *
+* Please refer to the contract document for details on license/copyright information.  *
+****************************************************************************************
+-->
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="mapping_left_to_mapping_right" args="0.249238735 0 0 0 0 0 1 mapping_left mapping_right 10" />
+<node pkg="tf" type="static_transform_publisher" name="velodyne16_to_refinement_left" args="0.14806 -0.12666 -0.073993 -0.0068258 -0.70795 0.70622 0.0029535 velodyne16 refinement_left 10" />
+<node pkg="tf" type="static_transform_publisher" name="velodyne16_to_mapping_left" args="0.08555 -0.10041 -0.07203 -0.0060832 -0.70944 0.70474 0.001065 velodyne16 mapping_left 10" />
+<node pkg="tf" type="static_transform_publisher" name="velodyne16_to_mapping_right_calib2" args="-0.16413 -0.097732 -0.072319 -0.00055836 -0.70758 0.70663 0.0014327 velodyne16 mapping_right_calib2 10" />
+<node pkg="tf" type="static_transform_publisher" name="velodyne16_to_xsens_imu" args="-0.02803 0.03496 -0.087869 0 0 0.70711 0.70711 velodyne16 xsens_imu 10" />
+</launch>

@@ -1,0 +1,22 @@
+lidarTopic: "/velodyne16/velodyne_points"
+odomTopic: "/smart_smoother/odom_imu"
+lineSegNum: 6
+maxEdgeNum: 20
+maxSurfNum: 40
+edgeThreshold: 0.2
+scanPeriod: 0.1
+
+mapMatchingScan: 1
+correspondence_thresh: 0.5
+lambda: 0.01
+min_error: 0.001
+bisWeight: 0.1
+map_cell_size: 2
+map_edge_voxel_size: 0.01
+map_plane_voxel_size: 0.2
+full_map_voxel_size: 0.01
+PCD_outdir: "/home/cong/Desktop/highbay_hallway.pcd"
+save_interval: 400
+init_distance: 1
+
+

@@ -4,7 +4,7 @@
   <arg name="outdir" default="/home/frc-uav/data"/>
   <arg name="prefix" default="data" />
   <node pkg="rosbag" type="record" name="data_logger" output="screen"
-	args=" -o $(arg outdir)/$(arg prefix)_mapping_velodyne_imu --split --size=2000 --buffsize=0
+	args=" -o $(arg outdir)/$(arg prefix)_mapping_velodyne_imu --split --size=2000 --buffsize=0 -e '(.*)piksi(.*)'
 
 /mapping/right/image_raw
 /mapping/right/camera_info

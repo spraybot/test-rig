@@ -33,7 +33,19 @@
 		<!-- pi - 0.261799 -->
 	</joint>
 
- 	<link name="lidar_link">
+ 	<link name="xsens_imu">
+		<visual>
+		    <origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>	
+	</link>
+
+ 	<joint name="base_link_imu_joint" type="fixed">
+    	<parent link="imu_link"/>
+    	<child link="xsens_imu"/>
+    	<origin xyz="0 0 0" rpy="0 0 0"/> 
+	</joint>
+
+ 	<link name="velodyne">
 		<visual>
 		    <origin xyz="0 0 0.0" rpy="0 0 0"/>
 			<geometry>
@@ -46,9 +58,9 @@
 	</link>
 
 
- 	<joint name="imu_lidar_joint" type="fixed">
+ 	<joint name="imu_velodyne_joint" type="fixed">
     	<parent link="imu_link"/>
-    	<child link="lidar_link"/>
+    	<child link="velodyne"/>
     	<origin xyz="0 0 -0.081445" rpy="0 3.14 -3.14"/>
 	</joint>
 	

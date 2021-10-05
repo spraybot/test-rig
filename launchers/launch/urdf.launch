@@ -1,0 +1,8 @@
+<launch>
+  <!-- Load the urdf into the parameter server. -->
+  <param name="test_rig" textfile="$(find launchers)/urdf/test_rig.urdf"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+    <remap from="robot_description" to="test_rig" />
+    <remap from="joint_states" to="different_joint_states" />
+  </node>
+</launch>

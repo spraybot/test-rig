@@ -35,8 +35,8 @@ def _rostopic_hz(topics, window_size=-1, filter_expr=None, use_wtime=False, tcp_
 if __name__ == "__main__":
     rostopic._check_master()
     rospy.init_node("monitor")
-    _rostopic_hz(["/velodyne_packets", "/imu/data"])
-
+    _rostopic_hz(["/velodyne_packets", "/xsens/imu/data", "/mapping/right/image_raw", "/mapping/right/camera_info", 
+    "/mapping/left/image_raw", "/mapping/left/camera_info"])
 
 
     

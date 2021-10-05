@@ -13,7 +13,6 @@
 /mapping/left/camera_info
 
 /velodyne_packets
-/velodyne_points
 
 /xsens/imu/data
 "

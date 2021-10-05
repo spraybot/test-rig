@@ -39,7 +39,7 @@
 		</visual>	
 	</link>
 
- 	<joint name="base_link_imu_joint" type="fixed">
+ 	<joint name="imu_xsens_imu_joint" type="fixed">
     	<parent link="imu_link"/>
     	<child link="xsens_imu"/>
     	<origin xyz="0 0 0" rpy="0 0 0"/> 

@@ -3,13 +3,22 @@
   
   <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
   <include file="$(find xsens_driver)/launch/xsens_driver.launch" />
-  <!--<include file="$(find pointgrey_camera_driver)/launch/right_mapping.launch" /> -->
-  <!--<include file="$(find pointgrey_camera_driver)/launch/left_mapping.launch" /> -->
+  <include file="$(find pointgrey_camera_driver)/launch/right_mapping.launch" />
+  <include file="$(find pointgrey_camera_driver)/launch/left_mapping.launch" />
 
   <node name="dynamic_reconfigure_load_left" pkg="dynamic_reconfigure" type="dynparam"
 	args="load /mapping/left/camera_nodelet $(find launchers)/config/mapping_cams_conf.yaml" />
 
   <node name="dynamic_reconfigure_load_right" pkg="dynamic_reconfigure" type="dynparam"
 	args="load /mapping/right/camera_nodelet $(find launchers)/config/mapping_cams_conf.yaml" />
+
+  <node pkg="launchers" type="monitor.py" name="monitor" />
+
+  <!-- Load the urdf into the parameter server. -->
+  <param name="test_rig" textfile="$(find launchers)/urdf/test_rig.urdf"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+    <remap from="robot_description" to="test_rig" />
+    <remap from="joint_states" to="different_joint_states" />
+  </node>
 
 </launch>

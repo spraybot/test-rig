@@ -1,0 +1,91 @@
+<robot name="test_rig">
+
+	<!-- * * * Link Definitions * * * -->
+
+ 	<link name="base_link">
+		<visual>
+		    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+			<!-- <geometry>
+				<box size="0.0364 .0364 0.02325"/>
+			</geometry>
+			<material name="ImuOrange">
+	       		<color rgba="1 0.6 0.1 1"/>
+	     	</material> -->
+		</visual>	
+	</link>
+
+ 	<link name="imu_link">
+		<visual>
+		    <origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.0364 .0364 0.02325"/>
+			</geometry>
+			<material name="ImuOrange">
+	       		<color rgba="1 0.6 0.1 1"/>
+	     	</material>
+		</visual>	
+	</link>
+
+ 	<joint name="base_link_imu_joint" type="fixed">
+    	<parent link="base_link"/>
+    	<child link="imu_link"/>
+    	<origin xyz="0 0 0" rpy="0 2.8797 -3.14"/> 
+		<!-- pi - 0.261799 -->
+	</joint>
+
+ 	<link name="lidar_link">
+		<visual>
+		    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+			<geometry>
+                <cylinder radius="0.0515" length="0.071"/>
+			</geometry>
+			<material name="LidarBlue">
+	       		<color rgba="0.3 0.4 0.9 1"/>
+	     	</material>
+		</visual>	
+	</link>
+
+
+ 	<joint name="imu_lidar_joint" type="fixed">
+    	<parent link="imu_link"/>
+    	<child link="lidar_link"/>
+    	<origin xyz="0 0 -0.081445" rpy="0 3.14 -3.14"/>
+	</joint>
+	
+ 	<link name="camera_l_link">
+		<visual>
+		    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.0264 0.0264 0.0264"/>
+			</geometry>
+			<material name="CameraBlack">
+	       		<color rgba="0.1 0.1 0.1 1"/>
+	     	</material>
+		</visual>	
+	</link>
+ 
+ 	<joint name="imu_camera_l_joint" type="fixed">
+    	<parent link="imu_link"/>
+    	<child link="camera_l_link"/>
+    	<origin xyz="0 0.164 0" rpy="0 0 0"/>
+	</joint>
+	
+ 	<link name="camera_r_link">
+		<visual>
+		    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.0264 0.0264 0.0264"/>
+			</geometry>
+			<material name="CameraBlack">
+	       		<color rgba="0.1 0.1 0.1 1"/>
+	     	</material>
+		</visual>	
+	</link>
+ 
+ 	<joint name="imu_camera_r_joint" type="fixed">
+    	<parent link="imu_link"/>
+    	<child link="camera_r_link"/>
+    	<origin xyz="0 -0.164 0" rpy="0 0 0"/>
+	</joint>
+
+</robot>

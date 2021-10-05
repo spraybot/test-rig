@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="rviz" type="rviz" name="rviz" />
+    <node pkg="mapviz" type="mapviz" name="mapviz"/>
+    <node pkg="swri_transform_util" type="initialize_origin.py" name="initialize_origin" >
+        <param name="local_xy_frame" value="/map"/>
+        <param name="local_xy_origin" value="auto"/>
+        <remap from="fix" to="/piksi/navsatfix_best_fix"/>
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="swri_transform" args="0 0 0 0 0 0 /map /origin 100"  />
+</launch>

@@ -21,4 +21,6 @@
     <remap from="joint_states" to="different_joint_states" />
   </node>
 
+  <include file="$(find piksi_multi_rtk_ros)/launch/piksi_multi_rover.launch" />
+
 </launch>
